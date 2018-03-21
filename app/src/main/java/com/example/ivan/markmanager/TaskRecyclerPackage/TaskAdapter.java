@@ -1,20 +1,19 @@
 package com.example.ivan.markmanager.TaskRecyclerPackage;
 
-import android.content.Context;
-import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.ivan.markmanager.ProjectFragments.ProjectChangeView;
 import com.example.ivan.markmanager.R;
-import com.example.ivan.markmanager.TaskActivity;
+import com.example.ivan.markmanager.TaskFragments.TaskChangeView;
+import com.example.ivan.markmanager.TaskFragments.TaskListFragment;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by Ivan on 20.03.2018.
@@ -23,11 +22,11 @@ import java.util.Collections;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     private ArrayList<Task> tasks;
-    private Context context;
+    private FragmentManager fragmentManager;
 
-    public TaskAdapter(ArrayList<Task> tasks, Context context) {
+    public TaskAdapter(ArrayList<Task> tasks, FragmentManager fragmentManager) {
         this.tasks = tasks;
-        this.context = context;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -40,7 +39,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = tasks.get(position);
         holder.taskName.setText(task.getName());
-        holder.taskDeadline.setText(task.getDeadline());
+        holder.taskChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_container, new TaskChangeView(), "TaskChangeView")
+                        .addToBackStack("TaskChangeView")
+                        .commit();
+            }
+        });
     }
 
     @Override
@@ -51,13 +59,25 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView taskName;
-        TextView taskDeadline;
+        ImageButton taskChange;
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
             taskName = (TextView) itemView.findViewById(R.id.task_item_name);
-            taskDeadline = (TextView) itemView.findViewById(R.id.task_item_deadline);
+            taskChange = (ImageButton) itemView.findViewById(R.id.task_item_change);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(view.getId() == itemView.getId()){
+                        fragmentManager
+                                .beginTransaction()
+                                .replace(R.id.main_container, new TaskListFragment(), "TaskListFragment")
+                                .addToBackStack("TaskListFragment")
+                                .commit();
+                    }
+                }
+            });
         }
     }
 }

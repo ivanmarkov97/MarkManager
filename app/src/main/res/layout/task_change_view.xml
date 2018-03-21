@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/change_project_toolbar"
+        android:id="@+id/change_task_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_dark"
@@ -14,23 +14,23 @@
     </android.support.v7.widget.Toolbar>
 
     <EditText
-        android:id="@+id/change_project_name"
+        android:id="@+id/change_task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/change_project_toolbar"
+        android:layout_below="@id/change_task_toolbar"
         android:hint="Name"/>
 
     <EditText
-        android:id="@+id/change_project_description"
+        android:id="@+id/change_task_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="140dp"
-        android:layout_below="@+id/change_project_name"
+        android:layout_below="@+id/change_task_name"
         android:hint="Description"/>
 
 
     <Button
-        android:id="@+id/change_project_change"
+        android:id="@+id/change_task_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

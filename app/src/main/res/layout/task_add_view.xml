@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/change_project_toolbar"
+        android:id="@+id/task_list_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_dark"
@@ -14,27 +14,40 @@
     </android.support.v7.widget.Toolbar>
 
     <EditText
-        android:id="@+id/change_project_name"
+        android:id="@+id/add_task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/change_project_toolbar"
+        android:layout_below="@+id/task_list_toolbar"
         android:hint="Name"/>
 
     <EditText
-        android:id="@+id/change_project_description"
+        android:id="@+id/add_task_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="140dp"
-        android:layout_below="@+id/change_project_name"
+        android:layout_below="@+id/add_task_name"
         android:hint="Description"/>
 
+    <TextView
+        android:id="@+id/add_task_created_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_task_description"
+        android:text="20.03.2018"/>
+
+    <TextView
+        android:id="@+id/add_task_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_task_created_at"
+        android:text="20.03.2018"/>
 
     <Button
-        android:id="@+id/change_project_change"
+        android:id="@+id/add_task_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="СОХРАНИТЬ" />
+        android:text="ДОБАВИТЬ" />
 
 </RelativeLayout>

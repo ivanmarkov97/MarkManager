@@ -1,8 +1,5 @@
 package com.example.ivan.markmanager.ProjectRecyclerPackage;
 
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.ivan.markmanager.ProjectFragments.ProjectChangeView;
 import com.example.ivan.markmanager.R;
-import com.example.ivan.markmanager.TaskActivity;
 import com.example.ivan.markmanager.TaskFragments.TaskListFragment;
 
 import java.util.ArrayList;
@@ -75,8 +71,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                     if(view.getId() == itemView.getId()){
                         fragmentManager
                                 .beginTransaction()
-                                .replace(R.id.main_container, new TaskListFragment(), "TaskListFragment")
-                                .addToBackStack("TaskListFragment")
+                                .replace(R.id.main_container, new TaskListFragment(), "ProjectListFragment")
+                                .addToBackStack("ProjectListFragment")
                                 .commit();
                     }
                 }
