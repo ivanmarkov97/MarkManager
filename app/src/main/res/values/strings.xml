@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MarkManager</string>
+    <string name="web_server">https://fierce-brook-58070.herokuapp.com</string>
+</resources>
