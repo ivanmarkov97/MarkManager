@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.ivan.markmanager.AddProjectActivity">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/add_project_toolbar"
@@ -26,21 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="140dp"
+        android:gravity="top"
         android:layout_below="@+id/add_project_name"
         android:hint="Description"/>
-
-    <TextView
-        android:id="@+id/add_project_created_at"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/add_project_description"
-        android:text="20.03.2018"/>
 
     <Button
         android:id="@+id/add_project_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/add_project_description"
         android:layout_centerHorizontal="true"
         android:text="ДОБАВИТЬ" />
 

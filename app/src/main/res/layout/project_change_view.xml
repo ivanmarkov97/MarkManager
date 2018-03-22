@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/change_project_toolbar"
@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="140dp"
+        android:gravity="top"
         android:layout_below="@+id/change_project_name"
         android:hint="Description"/>
 
@@ -33,7 +34,7 @@
         android:id="@+id/change_project_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/change_project_description"
         android:layout_centerHorizontal="true"
         android:text="СОХРАНИТЬ" />
 

@@ -13,9 +13,9 @@
         android:layout_toEndOf="@+id/project_item_image"
         android:text="TextView" />
 
-    <ImageView
+    <CheckBox
         android:id="@+id/project_item_image"
-        android:layout_width="70dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
         app:srcCompat="@mipmap/ic_launcher" />

@@ -12,12 +12,13 @@ import com.example.ivan.markmanager.R;
 import com.example.ivan.markmanager.TaskFragments.TaskListFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Ivan on 20.03.2018.
  */
 
-public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
+public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
     private ArrayList<Project> projects;
     private android.support.v4.app.FragmentManager fragmentManager;
@@ -37,16 +38,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Project project = projects.get(position);
         holder.projectName.setText(project.getName());
-        holder.projectChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_container, new ProjectChangeView(), "ProjectChangeView")
-                        .addToBackStack("ProjectChangeView")
-                        .commit();
-            }
-        });
     }
 
     @Override
@@ -54,16 +45,27 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         return projects.size();
     }
 
+    @Override
+    public boolean onItemMove(int from, int to) {
+        Collections.swap(projects, from, to);
+        notifyItemMoved(from, to);
+        return true;
+    }
+
+    @Override
+    public void onItemRemove(int pos) {
+        projects.remove(pos);
+        notifyItemRemoved(pos);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView projectName;
-        ImageButton projectChange;
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
             projectName = (TextView) itemView.findViewById(R.id.project_item_name);
-            projectChange = (ImageButton) itemView.findViewById(R.id.project_item_change);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,8 +73,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                     if(view.getId() == itemView.getId()){
                         fragmentManager
                                 .beginTransaction()
-                                .replace(R.id.main_container, new TaskListFragment(), "ProjectListFragment")
-                                .addToBackStack("ProjectListFragment")
+                                .replace(R.id.main_container, new TaskListFragment())
+                                .addToBackStack(null)
                                 .commit();
                     }
                 }
